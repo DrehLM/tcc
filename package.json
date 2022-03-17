@@ -1,8 +1,21 @@
 {
   "name": "tcc",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "packageManager": "yarn@1.22.17",
   "repository": "git@github.com:DrehLM/tcc.git",
   "author": "andre.gustavo <drehxlm@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.1.6"
+  },
+  "scripts": {
+    "test": "yarn turbo run test",
+    "dev": "yarn turbo run dev",
+    "build": "yarn turbo run build"
+  }
 }
