@@ -1,0 +1,8 @@
+{
+  "name": "tcc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:DrehLM/tcc.git",
+  "author": "andre.gustavo <drehxlm@gmail.com>",
+  "license": "MIT"
+}
