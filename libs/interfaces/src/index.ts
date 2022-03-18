@@ -13,4 +13,12 @@ export interface Edicao {
   ano: number;
   instituicaoId: number;
   instituicao?: Instituicao;
+  eventoId: number;
+  evento?: Evento;
+}
+
+export interface Evento {
+  id: number;
+  nome: string;
+  edicoes?: Edicao[];
 }

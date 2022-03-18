@@ -10,6 +10,7 @@ import {
   Sequelize,
 } from 'sequelize';
 import { Application } from '../declarations';
+import { Evento } from './eventos.model';
 import { Instituicao } from './instituicoes.model';
 
 export class Edicao
@@ -20,16 +21,22 @@ export class Edicao
   declare edicao: string;
   declare ano: number;
   declare instituicaoId: number;
+  declare eventoId: number;
 
   declare instituicao?: NonAttribute<Instituicao>;
+  declare evento?: NonAttribute<Evento>;
 
   declare static associations: {
     instituicao: Association<Edicao, Instituicao>;
+    evento: Association<Edicao, Evento>;
   };
 
   static associate() {
     Edicao.belongsTo(Instituicao, {
       as: 'instituicao',
+    });
+    Edicao.belongsTo(Evento, {
+      as: 'evento',
     });
   }
 }
@@ -54,6 +61,10 @@ export default function (app: Application) {
       instituicaoId: {
         type: DataTypes.INTEGER,
         field: 'instituicao_id',
+      },
+      eventoId: {
+        type: DataTypes.INTEGER,
+        field: 'evento_id',
       },
     },
     {
