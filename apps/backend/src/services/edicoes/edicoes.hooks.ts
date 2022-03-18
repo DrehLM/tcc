@@ -7,7 +7,7 @@ export default {
   before: {
     all: [],
     find: [includeAssociations()],
-    get: [],
+    get: [includeAssociations()],
     create: [],
     update: [],
     patch: [],
@@ -17,7 +17,7 @@ export default {
   after: {
     all: [],
     find: [hooks.dehydrate()],
-    get: [],
+    get: [hooks.dehydrate()],
     create: [],
     update: [],
     patch: [],
