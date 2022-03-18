@@ -43,3 +43,8 @@ export interface Tag {
   id: number;
   tag: Nullable<string>;
 }
+
+export interface PalavraChave {
+  id: number;
+  palavraChave: Nullable<string>;
+}
