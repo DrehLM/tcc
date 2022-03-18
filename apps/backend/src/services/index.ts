@@ -6,6 +6,7 @@ import trilhas from './trilhas/trilhas.service';
 import academicos from './academicos/academicos.service';
 import tags from './tags/tags.service';
 import palavrasChave from './palavras-chave/palavras-chave.service';
+import publicacoes from './publicacoes/publicacoes.service';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -17,4 +18,5 @@ export default function (app: Application): void {
   app.configure(academicos);
   app.configure(tags);
   app.configure(palavrasChave);
+  app.configure(publicacoes);
 }

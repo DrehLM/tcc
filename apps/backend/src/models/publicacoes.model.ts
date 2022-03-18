@@ -1,4 +1,4 @@
-import { Nullable, Trilha as TrilhaAttributes } from '@tcc/interfaces';
+import { Nullable, Publicacao as PublicacaoAttributes } from '@tcc/interfaces';
 import {
   Association,
   CreationOptional,
@@ -11,31 +11,34 @@ import {
 } from 'sequelize';
 import { Application } from '../declarations';
 import { Edicao } from './edicoes.model';
-import { Publicacao } from './publicacoes.model';
+import { Trilha } from './trilhas.model';
 
-export class Trilha
-  extends Model<InferAttributes<Trilha>, InferCreationAttributes<Trilha>>
-  implements TrilhaAttributes
+export class Publicacao
+  extends Model<
+    InferAttributes<Publicacao>,
+    InferCreationAttributes<Publicacao>
+  >
+  implements PublicacaoAttributes
 {
   declare id: CreationOptional<number>;
-  declare nome: Nullable<string>;
+  declare titulo: Nullable<string>;
   declare edicaoId: Nullable<number>;
+  declare trilhaId: Nullable<number>;
 
   declare edicao?: NonAttribute<Edicao>;
-  declare publicacoes?: NonAttribute<Publicacao[]>;
+  declare trilha?: NonAttribute<Trilha>;
 
   declare static associations: {
-    edicoes: Association<Trilha, Edicao>;
-    publicacoes: Association<Trilha, Publicacao>;
+    edicao: Association<Publicacao, Edicao>;
+    trilha: Association<Publicacao, Trilha>;
   };
 
   static associate() {
-    Trilha.belongsTo(Edicao, {
+    Publicacao.belongsTo(Edicao, {
       as: 'edicao',
     });
-    Trilha.hasMany(Publicacao, {
-      as: 'publicacoes',
-      foreignKey: 'trilhaId',
+    Publicacao.belongsTo(Trilha, {
+      as: 'trilha',
     });
   }
 }
@@ -43,27 +46,31 @@ export class Trilha
 export default function (app: Application) {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
 
-  Trilha.init(
+  Publicacao.init(
     {
       id: {
-        type: DataTypes.BIGINT,
-        allowNull: false,
+        type: DataTypes.INTEGER,
         primaryKey: true,
+        allowNull: false,
         autoIncrement: true,
       },
-      nome: {
+      titulo: {
         type: DataTypes.TEXT,
       },
       edicaoId: {
         type: DataTypes.INTEGER,
         field: 'edicao_id',
       },
+      trilhaId: {
+        type: DataTypes.INTEGER,
+        field: 'trilha_id',
+      },
     },
     {
-      tableName: 'trilhas',
+      tableName: 'publicacoes',
       sequelize: sequelizeClient,
     }
   );
 
-  return Trilha;
+  return Publicacao;
 }

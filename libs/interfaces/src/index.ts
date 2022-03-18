@@ -18,6 +18,7 @@ export interface Edicao {
   eventoId: Nullable<number>;
   evento?: Evento;
   trilhas?: Trilha[];
+  publicacoes?: Publicacao[];
 }
 
 export interface Evento {
@@ -31,6 +32,7 @@ export interface Trilha {
   nome: Nullable<string>;
   edicaoId: Nullable<number>;
   edicao?: Edicao;
+  publicacoes?: Publicacao[];
 }
 
 export interface Academico {
@@ -47,4 +49,13 @@ export interface Tag {
 export interface PalavraChave {
   id: number;
   palavraChave: Nullable<string>;
+}
+
+export interface Publicacao {
+  id: number;
+  titulo: Nullable<string>;
+  edicaoId: Nullable<number>;
+  edicao?: Edicao;
+  trilhaId: Nullable<number>;
+  trilha?: Trilha;
 }

@@ -12,6 +12,7 @@ import {
 import { Application } from '../declarations';
 import { Evento } from './eventos.model';
 import { Instituicao } from './instituicoes.model';
+import { Publicacao } from './publicacoes.model';
 import { Trilha } from './trilhas.model';
 
 export class Edicao
@@ -27,11 +28,13 @@ export class Edicao
   declare instituicao?: NonAttribute<Instituicao>;
   declare evento?: NonAttribute<Evento>;
   declare trilhas?: NonAttribute<Trilha[]>;
+  declare publicacoes?: NonAttribute<Publicacao[]>;
 
   declare static associations: {
     instituicao: Association<Edicao, Instituicao>;
     evento: Association<Edicao, Evento>;
     trilhas: Association<Edicao, Trilha>;
+    publicacoes: Association<Edicao, Publicacao>;
   };
 
   static associate() {
@@ -43,6 +46,10 @@ export class Edicao
     });
     Edicao.hasMany(Trilha, {
       as: 'trilhas',
+      foreignKey: 'edicaoId',
+    });
+    Edicao.hasMany(Publicacao, {
+      as: 'publicacoes',
       foreignKey: 'edicaoId',
     });
   }
