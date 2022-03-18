@@ -12,6 +12,7 @@ import {
 import { Application } from '../declarations';
 import { Evento } from './eventos.model';
 import { Instituicao } from './instituicoes.model';
+import { Trilha } from './trilhas.model';
 
 export class Edicao
   extends Model<InferAttributes<Edicao>, InferCreationAttributes<Edicao>>
@@ -25,10 +26,12 @@ export class Edicao
 
   declare instituicao?: NonAttribute<Instituicao>;
   declare evento?: NonAttribute<Evento>;
+  declare trilhas?: NonAttribute<Trilha[]>;
 
   declare static associations: {
     instituicao: Association<Edicao, Instituicao>;
     evento: Association<Edicao, Evento>;
+    trilhas: Association<Edicao, Trilha>;
   };
 
   static associate() {
@@ -37,6 +40,10 @@ export class Edicao
     });
     Edicao.belongsTo(Evento, {
       as: 'evento',
+    });
+    Edicao.hasMany(Trilha, {
+      as: 'trilhas',
+      foreignKey: 'edicaoId',
     });
   }
 }

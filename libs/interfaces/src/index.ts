@@ -15,10 +15,18 @@ export interface Edicao {
   instituicao?: Instituicao;
   eventoId: number;
   evento?: Evento;
+  trilhas?: Trilha[];
 }
 
 export interface Evento {
   id: number;
   nome: string;
   edicoes?: Edicao[];
+}
+
+export interface Trilha {
+  id: number;
+  nome: string;
+  edicaoId: number;
+  edicao?: Edicao;
 }
