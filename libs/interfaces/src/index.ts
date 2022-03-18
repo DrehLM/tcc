@@ -30,3 +30,9 @@ export interface Trilha {
   edicaoId: number;
   edicao?: Edicao;
 }
+
+export interface Academico {
+  id: number;
+  nome: string;
+  titulacao: string;
+}
