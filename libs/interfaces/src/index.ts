@@ -1,43 +1,45 @@
+export type Nullable<T> = T | null;
+
 export interface Instituicao {
   id: number;
-  nome: string;
-  sigla: string;
-  cidade: string;
-  estado: string;
+  nome: Nullable<string>;
+  sigla: Nullable<string>;
+  cidade: Nullable<string>;
+  estado: Nullable<string>;
   edicoes?: Edicao[];
 }
 
 export interface Edicao {
   id: number;
-  edicao: string;
-  ano: number;
-  instituicaoId: number;
+  edicao: Nullable<string>;
+  ano: Nullable<number>;
+  instituicaoId: Nullable<number>;
   instituicao?: Instituicao;
-  eventoId: number;
+  eventoId: Nullable<number>;
   evento?: Evento;
   trilhas?: Trilha[];
 }
 
 export interface Evento {
   id: number;
-  nome: string;
+  nome: Nullable<string>;
   edicoes?: Edicao[];
 }
 
 export interface Trilha {
   id: number;
-  nome: string;
-  edicaoId: number;
+  nome: Nullable<string>;
+  edicaoId: Nullable<number>;
   edicao?: Edicao;
 }
 
 export interface Academico {
   id: number;
-  nome: string;
-  titulacao: string;
+  nome: Nullable<string>;
+  titulacao: Nullable<string>;
 }
 
 export interface Tag {
   id: number;
-  tag: string;
+  tag: Nullable<string>;
 }

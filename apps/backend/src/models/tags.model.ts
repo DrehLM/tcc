@@ -1,4 +1,4 @@
-import { Tag as TagAttributes } from '@tcc/interfaces';
+import { Nullable, Tag as TagAttributes } from '@tcc/interfaces';
 import {
   CreationOptional,
   DataTypes,
@@ -14,7 +14,7 @@ export class Tag
   implements TagAttributes
 {
   declare id: CreationOptional<number>;
-  declare tag: string;
+  declare tag: Nullable<string>;
 }
 
 export default function (app: Application) {

@@ -1,4 +1,4 @@
-import { Edicao as EdicaoAttributes } from '@tcc/interfaces';
+import { Edicao as EdicaoAttributes, Nullable } from '@tcc/interfaces';
 import {
   Association,
   CreationOptional,
@@ -19,10 +19,10 @@ export class Edicao
   implements EdicaoAttributes
 {
   declare id: CreationOptional<number>;
-  declare edicao: string;
-  declare ano: number;
-  declare instituicaoId: number;
-  declare eventoId: number;
+  declare edicao: Nullable<string>;
+  declare ano: Nullable<number>;
+  declare instituicaoId: Nullable<number>;
+  declare eventoId: Nullable<number>;
 
   declare instituicao?: NonAttribute<Instituicao>;
   declare evento?: NonAttribute<Evento>;

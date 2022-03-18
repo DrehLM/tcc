@@ -1,4 +1,4 @@
-import { Trilha as TrilhaAttributes } from '@tcc/interfaces';
+import { Nullable, Trilha as TrilhaAttributes } from '@tcc/interfaces';
 import {
   Association,
   CreationOptional,
@@ -17,8 +17,8 @@ export class Trilha
   implements TrilhaAttributes
 {
   declare id: CreationOptional<number>;
-  declare nome: string;
-  declare edicaoId: number;
+  declare nome: Nullable<string>;
+  declare edicaoId: Nullable<number>;
 
   declare edicao?: NonAttribute<Edicao>;
 

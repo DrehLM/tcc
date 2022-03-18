@@ -1,4 +1,7 @@
-import { Instituicao as InstituicaoAttributes } from '@tcc/interfaces';
+import {
+  Instituicao as InstituicaoAttributes,
+  Nullable,
+} from '@tcc/interfaces';
 import {
   Association,
   CreationOptional,
@@ -20,10 +23,10 @@ export class Instituicao
   implements InstituicaoAttributes
 {
   declare id: CreationOptional<number>;
-  declare nome: string;
-  declare sigla: string;
-  declare cidade: string;
-  declare estado: string;
+  declare nome: Nullable<string>;
+  declare sigla: Nullable<string>;
+  declare cidade: Nullable<string>;
+  declare estado: Nullable<string>;
 
   declare edicoes?: NonAttribute<Edicao[]>;
 

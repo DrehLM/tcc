@@ -1,4 +1,4 @@
-import { Evento as EventoAttributes } from '@tcc/interfaces';
+import { Evento as EventoAttributes, Nullable } from '@tcc/interfaces';
 import {
   Association,
   CreationOptional,
@@ -17,7 +17,7 @@ export class Evento
   implements EventoAttributes
 {
   declare id: CreationOptional<number>;
-  declare nome: string;
+  declare nome: Nullable<string>;
 
   declare edicoes?: NonAttribute<Edicao[]>;
 

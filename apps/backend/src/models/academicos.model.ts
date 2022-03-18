@@ -1,4 +1,4 @@
-import { Academico as AcademicoAttributes } from '@tcc/interfaces';
+import { Academico as AcademicoAttributes, Nullable } from '@tcc/interfaces';
 import {
   CreationOptional,
   DataTypes,
@@ -14,8 +14,8 @@ export class Academico
   implements AcademicoAttributes
 {
   declare id: CreationOptional<number>;
-  declare nome: string;
-  declare titulacao: string;
+  declare nome: Nullable<string>;
+  declare titulacao: Nullable<string>;
 }
 
 export default function (app: Application) {
