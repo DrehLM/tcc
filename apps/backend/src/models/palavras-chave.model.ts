@@ -40,6 +40,7 @@ export default function (app: Application) {
       },
     },
     {
+      modelName: 'palavraChave',
       tableName: 'palavras_chave',
       sequelize: sequelizeClient,
     }

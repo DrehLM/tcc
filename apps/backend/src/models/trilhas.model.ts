@@ -60,6 +60,7 @@ export default function (app: Application) {
       },
     },
     {
+      modelName: 'trilha',
       tableName: 'trilhas',
       sequelize: sequelizeClient,
     }

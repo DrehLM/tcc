@@ -37,6 +37,7 @@ export default function (app: Application) {
       },
     },
     {
+      modelName: 'academico',
       tableName: 'academicos',
       sequelize: sequelizeClient,
     }

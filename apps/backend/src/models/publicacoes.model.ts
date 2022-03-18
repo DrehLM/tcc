@@ -11,6 +11,8 @@ import {
 } from 'sequelize';
 import { Application } from '../declarations';
 import { Edicao } from './edicoes.model';
+import { PublicacaoTag } from './publicacoes-tags.model';
+import { Tag } from './tags.model';
 import { Trilha } from './trilhas.model';
 
 export class Publicacao
@@ -27,10 +29,14 @@ export class Publicacao
 
   declare edicao?: NonAttribute<Edicao>;
   declare trilha?: NonAttribute<Trilha>;
+  declare tags?: NonAttribute<Tag[]>;
+  declare publicacoesTags?: NonAttribute<PublicacaoTag[]>;
 
   declare static associations: {
     edicao: Association<Publicacao, Edicao>;
     trilha: Association<Publicacao, Trilha>;
+    tags: Association<Publicacao, Tag>;
+    publicacoesTags: Association<Publicacao, PublicacaoTag>;
   };
 
   static associate() {
@@ -39,6 +45,14 @@ export class Publicacao
     });
     Publicacao.belongsTo(Trilha, {
       as: 'trilha',
+    });
+    Publicacao.belongsToMany(Tag, {
+      as: 'tags',
+      through: PublicacaoTag,
+    });
+    Publicacao.hasMany(PublicacaoTag, {
+      as: 'publicacoesTags',
+      foreignKey: 'publicacaoId',
     });
   }
 }
@@ -67,6 +81,7 @@ export default function (app: Application) {
       },
     },
     {
+      modelName: 'publicacao',
       tableName: 'publicacoes',
       sequelize: sequelizeClient,
     }

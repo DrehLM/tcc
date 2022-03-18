@@ -67,6 +67,7 @@ export default function (app: Application) {
       },
     },
     {
+      modelName: 'instituicao',
       tableName: 'instituicoes',
       sequelize: sequelizeClient,
     }

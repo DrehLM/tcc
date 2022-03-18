@@ -44,6 +44,8 @@ export interface Academico {
 export interface Tag {
   id: number;
   tag: Nullable<string>;
+  publicacoes?: Publicacao[];
+  publicacoesTags?: PublicacaoTag[];
 }
 
 export interface PalavraChave {
@@ -58,4 +60,14 @@ export interface Publicacao {
   edicao?: Edicao;
   trilhaId: Nullable<number>;
   trilha?: Trilha;
+  tags?: Tag[];
+  publicacoesTags?: PublicacaoTag[];
+}
+
+export interface PublicacaoTag {
+  id: number;
+  publicacaoId: Nullable<number>;
+  publicacao?: Publicacao;
+  tagId: Nullable<number>;
+  tag?: Tag;
 }

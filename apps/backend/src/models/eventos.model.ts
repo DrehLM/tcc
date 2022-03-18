@@ -49,6 +49,7 @@ export default function (app: Application) {
       },
     },
     {
+      modelName: 'evento',
       tableName: 'eventos',
       sequelize: sequelizeClient,
     }
