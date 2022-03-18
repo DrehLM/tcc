@@ -36,3 +36,8 @@ export interface Academico {
   nome: string;
   titulacao: string;
 }
+
+export interface Tag {
+  id: number;
+  tag: string;
+}
