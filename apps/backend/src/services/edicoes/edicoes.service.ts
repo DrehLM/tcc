@@ -1,12 +1,12 @@
 import { ServiceAddons } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
-import createModel from '../../models/instituicoes.model';
-import { Instituicoes } from './instituicoes.class';
-import hooks from './instituicoes.hooks';
+import createModel from '../../models/edicoes.model';
+import { Edicoes } from './edicoes.class';
+import hooks from './edicoes.hooks';
 
 declare module '../../declarations' {
   interface ServiceTypes {
-    instituicoes: Instituicoes & ServiceAddons<any>;
+    edicoes: Edicoes & ServiceAddons<any>;
   }
 }
 
@@ -16,9 +16,9 @@ export default function (app: Application): void {
     paginate: app.get('paginate'),
   };
 
-  app.use('/instituicoes', new Instituicoes(options, app));
+  app.use('/edicoes', new Edicoes(options, app));
 
-  const service = app.service('instituicoes');
+  const service = app.service('edicoes');
 
   service.hooks(hooks);
 }

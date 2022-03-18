@@ -20,7 +20,7 @@ export default function (app: Application): void {
 
     // Set up data relationships
     const models = sequelize.models;
-    Object.keys(models).forEach(name => {
+    Object.keys(models).forEach((name) => {
       if ('associate' in models[name]) {
         (models[name] as any).associate(models);
       }

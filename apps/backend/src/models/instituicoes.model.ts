@@ -1,15 +1,18 @@
 import { Instituicao as InstituicaoAttributes } from '@tcc/interfaces';
 import {
+  Association,
   CreationOptional,
   DataTypes,
   InferAttributes,
   InferCreationAttributes,
   Model,
+  NonAttribute,
   Sequelize,
 } from 'sequelize';
 import { Application } from '../declarations';
+import { Edicao } from './edicoes.model';
 
-class Instituicao
+export class Instituicao
   extends Model<
     InferAttributes<Instituicao>,
     InferCreationAttributes<Instituicao>
@@ -21,6 +24,19 @@ class Instituicao
   declare sigla: string;
   declare cidade: string;
   declare estado: string;
+
+  declare edicoes?: NonAttribute<Edicao[]>;
+
+  declare static associations: {
+    edicoes: Association<Instituicao, Edicao>;
+  };
+
+  static associate() {
+    Instituicao.hasMany(Edicao, {
+      as: 'edicoes',
+      foreignKey: 'instituicaoId',
+    });
+  }
 }
 
 export default function (app: Application) {

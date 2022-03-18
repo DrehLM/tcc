@@ -4,4 +4,13 @@ export interface Instituicao {
   sigla: string;
   cidade: string;
   estado: string;
+  edicoes?: Edicao[];
+}
+
+export interface Edicao {
+  id: number;
+  edicao: string;
+  ano: number;
+  instituicaoId: number;
+  instituicao?: Instituicao;
 }

@@ -1,5 +1,5 @@
 import { HooksObject } from '@feathersjs/feathers';
-import { Instituicao } from '@tcc/interfaces';
+import { Edicao } from '@tcc/interfaces';
 import { hooks } from 'feathers-sequelize';
 import includeAssociations from '../../hooks/include-associations';
 
@@ -33,4 +33,4 @@ export default {
     patch: [],
     remove: [],
   },
-} as HooksObject<Instituicao>;
+} as HooksObject<Edicao>;
