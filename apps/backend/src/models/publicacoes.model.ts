@@ -11,6 +11,7 @@ import {
 } from 'sequelize';
 import { Application } from '../declarations';
 import { Edicao } from './edicoes.model';
+import { Escrita } from './escritas.model';
 import { PalavraChave } from './palavras-chave.model';
 import { PublicacaoPalavraChave } from './publicacoes-palavras-chave.model';
 import { PublicacaoTag } from './publicacoes-tags.model';
@@ -34,6 +35,7 @@ export class Publicacao
   declare tags?: NonAttribute<Tag[]>;
   declare publicacoesTags?: NonAttribute<PublicacaoTag[]>;
   declare publicacoesPalavrasChave?: NonAttribute<PublicacaoPalavraChave[]>;
+  declare escritas?: NonAttribute<Escrita[]>;
 
   declare static associations: {
     edicao: Association<Publicacao, Edicao>;
@@ -41,6 +43,7 @@ export class Publicacao
     tags: Association<Publicacao, Tag>;
     publicacoesTags: Association<Publicacao, PublicacaoTag>;
     publicacoesPalavrasChave: Association<Publicacao, PublicacaoPalavraChave>;
+    escritas: Association<Publicacao, Escrita>;
   };
 
   static associate() {
@@ -65,6 +68,10 @@ export class Publicacao
     Publicacao.hasMany(PublicacaoPalavraChave, {
       as: 'publicacoesPalavrasChave',
       foreignKey: 'palavraChaveId',
+    });
+    Publicacao.hasMany(Escrita, {
+      as: 'escritas',
+      foreignKey: 'publicacaoId',
     });
   }
 }

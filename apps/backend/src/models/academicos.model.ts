@@ -1,13 +1,16 @@
 import { Academico as AcademicoAttributes, Nullable } from '@tcc/interfaces';
 import {
+  Association,
   CreationOptional,
   DataTypes,
   InferAttributes,
   InferCreationAttributes,
   Model,
+  NonAttribute,
   Sequelize,
 } from 'sequelize';
 import { Application } from '../declarations';
+import { Escrita } from './escritas.model';
 
 export class Academico
   extends Model<InferAttributes<Academico>, InferCreationAttributes<Academico>>
@@ -16,6 +19,19 @@ export class Academico
   declare id: CreationOptional<number>;
   declare nome: Nullable<string>;
   declare titulacao: Nullable<string>;
+
+  declare escritas?: NonAttribute<Escrita[]>;
+
+  declare static associations: {
+    escritas: Association<Academico, Escrita>;
+  };
+
+  static associate() {
+    Academico.hasMany(Escrita, {
+      as: 'escritas',
+      foreignKey: 'academicoId',
+    });
+  }
 }
 
 export default function (app: Application) {
