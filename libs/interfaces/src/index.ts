@@ -62,12 +62,21 @@ export interface Publicacao {
   trilha?: Trilha;
   tags?: Tag[];
   publicacoesTags?: PublicacaoTag[];
+  publicacoesPalavrasChave?: PublicacaoPalavraChave[];
 }
 
 export interface PublicacaoTag {
   id: number;
-  publicacaoId: Nullable<number>;
+  publicacaoId: number;
   publicacao?: Publicacao;
-  tagId: Nullable<number>;
+  tagId: number;
   tag?: Tag;
+}
+
+export interface PublicacaoPalavraChave {
+  id: number;
+  publicacaoId: number;
+  publicacao?: Publicacao;
+  palavraChaveId: number;
+  palavraChave?: PalavraChave;
 }

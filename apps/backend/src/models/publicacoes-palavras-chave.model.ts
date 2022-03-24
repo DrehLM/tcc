@@ -1,4 +1,4 @@
-import { PublicacaoTag as PublicacaoTagAttributes } from '@tcc/interfaces';
+import { PublicacaoPalavraChave as PublicacaoPalavraChaveAttributes } from '@tcc/interfaces';
 import {
   Association,
   CreationOptional,
@@ -10,36 +10,36 @@ import {
   Sequelize,
 } from 'sequelize';
 import { Application } from '../declarations';
+import { PalavraChave } from './palavras-chave.model';
 import { Publicacao } from './publicacoes.model';
-import { Tag } from './tags.model';
 
-export class PublicacaoTag
+export class PublicacaoPalavraChave
   extends Model<
-    InferAttributes<PublicacaoTag>,
-    InferCreationAttributes<PublicacaoTag>
+    InferAttributes<PublicacaoPalavraChave>,
+    InferCreationAttributes<PublicacaoPalavraChave>
   >
-  implements PublicacaoTagAttributes
+  implements PublicacaoPalavraChaveAttributes
 {
   declare id: CreationOptional<number>;
   declare publicacaoId: number;
-  declare tagId: number;
+  declare palavraChaveId: number;
 
   declare publicacao?: NonAttribute<Publicacao>;
-  declare tag?: NonAttribute<Tag>;
+  declare palavraChave?: NonAttribute<PalavraChave>;
 
   declare static associations: {
-    publicacao: Association<PublicacaoTag, Publicacao>;
-    tag: Association<PublicacaoTag, Tag>;
+    publicacao: Association<PublicacaoPalavraChave, Publicacao>;
+    palavraChave: Association<PublicacaoPalavraChave, PalavraChave>;
   };
 
   static associate() {
-    PublicacaoTag.belongsTo(Publicacao, {
+    PublicacaoPalavraChave.belongsTo(Publicacao, {
       as: 'publicacao',
       foreignKey: 'publicacaoId',
     });
-    PublicacaoTag.belongsTo(Tag, {
-      as: 'tag',
-      foreignKey: 'tagId',
+    PublicacaoPalavraChave.belongsTo(PalavraChave, {
+      as: 'palavraChave',
+      foreignKey: 'palavraChaveId',
     });
   }
 }
@@ -47,7 +47,7 @@ export class PublicacaoTag
 export default function (app: Application) {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
 
-  PublicacaoTag.init(
+  PublicacaoPalavraChave.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -58,20 +58,18 @@ export default function (app: Application) {
       publicacaoId: {
         type: DataTypes.INTEGER,
         field: 'publicacao_id',
-        allowNull: false,
       },
-      tagId: {
+      palavraChaveId: {
         type: DataTypes.INTEGER,
-        field: 'tag_id',
-        allowNull: false,
+        field: 'palavra_chave_id',
       },
     },
     {
-      modelName: 'publicacaoTag',
-      tableName: 'publicacoes_tags',
+      modelName: 'publicacaoPalavraChave',
+      tableName: 'publicacoes_palavras_chave',
       sequelize: sequelizeClient,
     }
   );
 
-  return PublicacaoTag;
+  return PublicacaoPalavraChave;
 }
