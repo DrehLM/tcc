@@ -11,6 +11,7 @@ import {
 } from 'sequelize';
 import { Application } from '../declarations';
 import { Escrita } from './escritas.model';
+import { Orientacao } from './orientacoes.model';
 
 export class Academico
   extends Model<InferAttributes<Academico>, InferCreationAttributes<Academico>>
@@ -21,14 +22,20 @@ export class Academico
   declare titulacao: Nullable<string>;
 
   declare escritas?: NonAttribute<Escrita[]>;
+  declare orientacoes?: NonAttribute<Orientacao[]>;
 
   declare static associations: {
     escritas: Association<Academico, Escrita>;
+    orientacoes: Association<Academico, Orientacao>;
   };
 
   static associate() {
     Academico.hasMany(Escrita, {
       as: 'escritas',
+      foreignKey: 'academicoId',
+    });
+    Academico.hasMany(Orientacao, {
+      as: 'orientacoes',
       foreignKey: 'academicoId',
     });
   }

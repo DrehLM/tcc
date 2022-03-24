@@ -12,6 +12,7 @@ import {
 import { Application } from '../declarations';
 import { Academico } from './academicos.model';
 import { Instituicao } from './instituicoes.model';
+import { Orientacao } from './orientacoes.model';
 import { Publicacao } from './publicacoes.model';
 
 export class Escrita
@@ -26,11 +27,13 @@ export class Escrita
   declare instituicao?: NonAttribute<Instituicao>;
   declare academico?: NonAttribute<Academico>;
   declare publicacao?: NonAttribute<Publicacao>;
+  declare orientacoes?: NonAttribute<Orientacao[]>;
 
   declare static associations: {
     instituicao: Association<Escrita, Instituicao>;
     academico: Association<Escrita, Academico>;
     publicacao: Association<Escrita, Publicacao>;
+    orientacoes: Association<Escrita, Orientacao>;
   };
 
   static associate() {
@@ -42,6 +45,10 @@ export class Escrita
     });
     Escrita.belongsTo(Publicacao, {
       as: 'publicacao',
+    });
+    Escrita.hasMany(Orientacao, {
+      as: 'orientacoes',
+      foreignKey: 'escritaId',
     });
   }
 }
@@ -74,7 +81,7 @@ export default function (app: Application) {
       },
     },
     {
-      modelName: 'escritas',
+      modelName: 'escrita',
       tableName: 'escritas',
       sequelize: sequelizeClient,
     }

@@ -41,6 +41,7 @@ export interface Academico {
   nome: Nullable<string>;
   titulacao: Nullable<string>;
   escritas?: Escrita[];
+  orientacoes?: Orientacao[];
 }
 
 export interface Tag {
@@ -92,4 +93,13 @@ export interface Escrita {
   academico?: Academico;
   publicacaoId: number;
   publicacao?: Publicacao;
+  orientacoes?: Orientacao[];
+}
+
+export interface Orientacao {
+  id: number;
+  academicoId: number;
+  academico?: Academico;
+  escritaId: number;
+  escrita?: Escrita;
 }
