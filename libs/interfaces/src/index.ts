@@ -55,6 +55,7 @@ export interface PalavraChave {
 
 export interface Publicacao {
   id: number;
+  ano?: number;
   titulo: Nullable<string>;
   edicaoId: Nullable<number>;
   edicao?: Edicao;
