@@ -1,0 +1,1 @@
+DROP TABLE publicacoes_palavras_chave;

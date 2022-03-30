@@ -7,6 +7,7 @@ export interface Instituicao {
   cidade: Nullable<string>;
   estado: Nullable<string>;
   edicoes?: Edicao[];
+  escritas?: Escrita[];
 }
 
 export interface Edicao {
@@ -39,6 +40,8 @@ export interface Academico {
   id: number;
   nome: Nullable<string>;
   titulacao: Nullable<string>;
+  escritas?: Escrita[];
+  orientacoes?: Orientacao[];
 }
 
 export interface Tag {
@@ -63,12 +66,41 @@ export interface Publicacao {
   trilha?: Trilha;
   tags?: Tag[];
   publicacoesTags?: PublicacaoTag[];
+  publicacoesPalavrasChave?: PublicacaoPalavraChave[];
+  escritas?: Escrita[];
 }
 
 export interface PublicacaoTag {
   id: number;
-  publicacaoId: Nullable<number>;
+  publicacaoId: number;
   publicacao?: Publicacao;
-  tagId: Nullable<number>;
+  tagId: number;
   tag?: Tag;
+}
+
+export interface PublicacaoPalavraChave {
+  id: number;
+  publicacaoId: number;
+  publicacao?: Publicacao;
+  palavraChaveId: number;
+  palavraChave?: PalavraChave;
+}
+
+export interface Escrita {
+  id: number;
+  instituicaoId: number;
+  instituicao?: Instituicao;
+  academicoId: number;
+  academico?: Academico;
+  publicacaoId: number;
+  publicacao?: Publicacao;
+  orientacoes?: Orientacao[];
+}
+
+export interface Orientacao {
+  id: number;
+  academicoId: number;
+  academico?: Academico;
+  escritaId: number;
+  escrita?: Escrita;
 }

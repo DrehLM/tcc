@@ -14,6 +14,7 @@ import {
 } from 'sequelize';
 import { Application } from '../declarations';
 import { Edicao } from './edicoes.model';
+import { Escrita } from './escritas.model';
 
 export class Instituicao
   extends Model<
@@ -29,14 +30,20 @@ export class Instituicao
   declare estado: Nullable<string>;
 
   declare edicoes?: NonAttribute<Edicao[]>;
+  declare escritas?: NonAttribute<Escrita[]>;
 
   declare static associations: {
     edicoes: Association<Instituicao, Edicao>;
+    escritas: Association<Instituicao, Escrita>;
   };
 
   static associate() {
     Instituicao.hasMany(Edicao, {
       as: 'edicoes',
+      foreignKey: 'instituicaoId',
+    });
+    Instituicao.hasMany(Escrita, {
+      as: 'escritas',
       foreignKey: 'instituicaoId',
     });
   }

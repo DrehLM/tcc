@@ -11,6 +11,9 @@ import {
 } from 'sequelize';
 import { Application } from '../declarations';
 import { Edicao } from './edicoes.model';
+import { Escrita } from './escritas.model';
+import { PalavraChave } from './palavras-chave.model';
+import { PublicacaoPalavraChave } from './publicacoes-palavras-chave.model';
 import { PublicacaoTag } from './publicacoes-tags.model';
 import { Tag } from './tags.model';
 import { Trilha } from './trilhas.model';
@@ -31,12 +34,16 @@ export class Publicacao
   declare trilha?: NonAttribute<Trilha>;
   declare tags?: NonAttribute<Tag[]>;
   declare publicacoesTags?: NonAttribute<PublicacaoTag[]>;
+  declare publicacoesPalavrasChave?: NonAttribute<PublicacaoPalavraChave[]>;
+  declare escritas?: NonAttribute<Escrita[]>;
 
   declare static associations: {
     edicao: Association<Publicacao, Edicao>;
     trilha: Association<Publicacao, Trilha>;
     tags: Association<Publicacao, Tag>;
     publicacoesTags: Association<Publicacao, PublicacaoTag>;
+    publicacoesPalavrasChave: Association<Publicacao, PublicacaoPalavraChave>;
+    escritas: Association<Publicacao, Escrita>;
   };
 
   static associate() {
@@ -52,6 +59,18 @@ export class Publicacao
     });
     Publicacao.hasMany(PublicacaoTag, {
       as: 'publicacoesTags',
+      foreignKey: 'publicacaoId',
+    });
+    Publicacao.belongsToMany(PalavraChave, {
+      as: 'palavrasChave',
+      through: PublicacaoPalavraChave,
+    });
+    Publicacao.hasMany(PublicacaoPalavraChave, {
+      as: 'publicacoesPalavrasChave',
+      foreignKey: 'palavraChaveId',
+    });
+    Publicacao.hasMany(Escrita, {
+      as: 'escritas',
       foreignKey: 'publicacaoId',
     });
   }
