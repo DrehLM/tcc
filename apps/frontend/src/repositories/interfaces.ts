@@ -8,3 +8,10 @@ export interface IRead<T> {
   find(item: T): Promise<T[]>;
   findOne(id: string): Promise<T>;
 }
+
+export interface Paginated<T> {
+  data: T[];
+  total: number;
+  $skip: number;
+  $limit: number;
+}

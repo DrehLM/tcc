@@ -1,7 +1,26 @@
-import { HooksObject } from '@feathersjs/feathers';
+import { Hook, HooksObject } from '@feathersjs/feathers';
 import { Evento } from '@tcc/interfaces';
 import { hooks } from 'feathers-sequelize';
-import includeAssociations from '../../hooks/include-associations';
+
+function includeAssociations(): Hook {
+  return (context) => {
+    context.params.sequelize = {
+      ...(context.params.sequelize ?? {}),
+      raw: false,
+      include: [
+        ...(context.params.sequelize?.include ?? []),
+        {
+          association: 'edicoes',
+          include: [
+            {
+              association: 'publicacoes',
+            },
+          ],
+        },
+      ],
+    };
+  };
+}
 
 export default {
   before: {

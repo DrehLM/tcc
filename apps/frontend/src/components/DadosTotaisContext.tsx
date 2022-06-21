@@ -1,5 +1,5 @@
 import React, { useState, createContext, ReactNode, FC } from "react";
-import { Evento } from "../../../../libs/interfaces/src/index";
+import { Evento } from "@tcc/interfaces";
 
 export type TDadosTotaisContext = {
   publicacoesTotais: Evento[];

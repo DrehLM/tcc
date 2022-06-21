@@ -1,19 +1,23 @@
 import { IRead, IWrite } from "./interfaces";
 
 export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
-  create(item: T): Promise<boolean> {
+  async create(item: T): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
-  update(id: string, item: T): Promise<boolean> {
+
+  async update(id: string, item: T): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
-  delete(id: string): Promise<boolean> {
+
+  async delete(id: string): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
-  async find(item: T): Promise<T[]> {
+
+  async find(): Promise<T[]> {
     throw new Error("Method not implemented.");
   }
-  findOne(id: string): Promise<T> {
+
+  async findOne(id: string): Promise<T> {
     throw new Error("Method not implemented.");
   }
 }

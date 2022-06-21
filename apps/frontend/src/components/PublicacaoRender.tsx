@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box, Checkbox, Paper, Typography } from "@mui/material";
-import { Publicacao } from "../../../../libs/interfaces/src";
+import { Publicacao } from "@tcc/interfaces";
 import {
   PublicacoesSelecionadasContext,
   TPublicacoesSeleciodadsContext,

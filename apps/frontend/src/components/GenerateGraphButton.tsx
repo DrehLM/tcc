@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Fab, Tooltip, Zoom } from "@mui/material";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 

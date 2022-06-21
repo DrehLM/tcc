@@ -1,4 +1,4 @@
-import { Publicacao } from "../../../../libs/interfaces/src";
+import { Publicacao } from "@tcc/interfaces";
 
 export const includePublicacao = (
   publicacoes: Publicacao[],

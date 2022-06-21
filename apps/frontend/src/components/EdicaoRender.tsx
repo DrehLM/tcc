@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box, Checkbox, Paper, Typography } from "@mui/material";
-import { Edicao } from "../../../../libs/interfaces/src";
+import { Edicao } from "@tcc/interfaces";
 import {
   PublicacoesSelecionadasContext,
   TPublicacoesSeleciodadsContext,
 } from "./PublicacoesSelecionadasContext";
 import { useNavigate } from "react-router-dom";
 import { includePublicacao } from "../utils/includePublicacao";
+import formatTitle from "../pages/edicoes/formatTitle";
 
 type EdicaoRendererProps = {
   edicao?: Edicao;
@@ -20,7 +21,7 @@ const EdicaoRenderer = ({ edicao }: EdicaoRendererProps) => {
     PublicacoesSelecionadasContext
   ) as TPublicacoesSeleciodadsContext;
 
-  const title = `${edicao?.edicao} (${edicao?.ano})`;
+  const title = formatTitle(edicao);
 
   useEffect(() => {
     const publicacoesEdicao = edicao?.publicacoes;

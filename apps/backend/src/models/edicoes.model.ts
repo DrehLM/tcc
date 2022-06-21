@@ -22,6 +22,8 @@ export class Edicao
   declare id: CreationOptional<number>;
   declare edicao: Nullable<string>;
   declare ano: Nullable<number>;
+  declare inicio: Nullable<Date>;
+  declare fim: Nullable<Date>;
   declare instituicaoId: Nullable<number>;
   declare eventoId: Nullable<number>;
 
@@ -71,6 +73,12 @@ export default function (app: Application) {
       },
       ano: {
         type: DataTypes.INTEGER,
+      },
+      inicio: {
+        type: DataTypes.DATE,
+      },
+      fim: {
+        type: DataTypes.DATE,
       },
       instituicaoId: {
         type: DataTypes.INTEGER,

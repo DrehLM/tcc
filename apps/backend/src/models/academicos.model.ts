@@ -20,6 +20,7 @@ export class Academico
   declare id: CreationOptional<number>;
   declare nome: Nullable<string>;
   declare titulacao: Nullable<string>;
+  declare email: Nullable<string>;
 
   declare escritas?: NonAttribute<Escrita[]>;
   declare orientacoes?: NonAttribute<Orientacao[]>;
@@ -53,6 +54,9 @@ export default function (app: Application) {
         autoIncrement: true,
       },
       nome: {
+        type: DataTypes.TEXT,
+      },
+      email: {
         type: DataTypes.TEXT,
       },
       titulacao: {

@@ -1,5 +1,5 @@
 import React, { useState, createContext, ReactNode, FC } from "react";
-import { Publicacao } from "../../../../libs/interfaces/src/index";
+import { Publicacao } from "@tcc/interfaces";
 
 export type TPublicacoesSeleciodadsContext = {
   publicacoes: Publicacao[];

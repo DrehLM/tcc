@@ -27,8 +27,12 @@ export class Publicacao
 {
   declare id: CreationOptional<number>;
   declare titulo: Nullable<string>;
+  declare ano: Nullable<number>;
   declare edicaoId: Nullable<number>;
   declare trilhaId: Nullable<number>;
+  declare descricao: Nullable<string>;
+  declare resumo: Nullable<string>;
+  declare abstract: Nullable<string>;
 
   declare edicao?: NonAttribute<Edicao>;
   declare trilha?: NonAttribute<Trilha>;
@@ -90,6 +94,9 @@ export default function (app: Application) {
       titulo: {
         type: DataTypes.TEXT,
       },
+      ano: {
+        type: DataTypes.INTEGER,
+      },
       edicaoId: {
         type: DataTypes.INTEGER,
         field: 'edicao_id',
@@ -97,6 +104,15 @@ export default function (app: Application) {
       trilhaId: {
         type: DataTypes.INTEGER,
         field: 'trilha_id',
+      },
+      descricao: {
+        type: DataTypes.TEXT,
+      },
+      resumo: {
+        type: DataTypes.TEXT,
+      },
+      abstract: {
+        type: DataTypes.TEXT,
       },
     },
     {

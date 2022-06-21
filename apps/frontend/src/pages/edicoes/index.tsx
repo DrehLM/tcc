@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Grid } from "@mui/material";
-import { Edicao, Publicacao } from "../../../../libs/interfaces/src";
-import EdicaoRenderer from "../components/EdicaoRender";
+import { Edicao, Publicacao } from "@tcc/interfaces";
+import EdicaoRenderer from "../../components/EdicaoRender";
 import { useLocation } from "react-router-dom";
 import {
   PublicacoesSelecionadasContext,
   TPublicacoesSeleciodadsContext,
-} from "./../components/PublicacoesSelecionadasContext";
-import { includePublicacao } from "../utils/includePublicacao";
+} from "../../components/PublicacoesSelecionadasContext";
+import { includePublicacao } from "../../utils/includePublicacao";
 
 interface EdicoesLocationState {
   edicoesData: Edicao[];

@@ -18,6 +18,7 @@ export class Evento
 {
   declare id: CreationOptional<number>;
   declare nome: Nullable<string>;
+  declare sigla: Nullable<string>;
 
   declare edicoes?: NonAttribute<Edicao[]>;
 
@@ -45,6 +46,9 @@ export default function (app: Application) {
         autoIncrement: true,
       },
       nome: {
+        type: DataTypes.TEXT,
+      },
+      sigla: {
         type: DataTypes.TEXT,
       },
     },

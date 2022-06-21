@@ -8,7 +8,7 @@ import Home from "../pages/Home";
 import Publicacoes from "../pages/Publicacoes";
 import MySnackbar from "../components/MySnackbar";
 
-import Edicoes from "./Edicoes";
+import Edicoes from "./edicoes";
 import BackButton from "../components/BackButton";
 import GenerateGraphButton from "../components/GenerateGraphButton";
 

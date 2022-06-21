@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Grid } from "@mui/material";
-import { Publicacao } from "../../../../libs/interfaces/src";
+import { Publicacao } from "@tcc/interfaces";
 import PublicacaoRender from "../components/PublicacaoRender";
 import {
   PublicacoesSelecionadasContext,
