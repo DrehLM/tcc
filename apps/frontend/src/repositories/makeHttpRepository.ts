@@ -8,8 +8,8 @@ import {
   isOk,
 } from "./utils/responses";
 
-export function makeHttpRepository<T>(path: string) {
-  return class Repository extends BaseRepository<T> {
+export function buildHttpRepository<T>(path: string) {
+  return class HttpRepository extends BaseRepository<T> {
     async create(data: WithoutId<T>) {
       const response = await apiRest.post<T>(`/${path}`, data);
       return isCreated(response);
@@ -37,4 +37,9 @@ export function makeHttpRepository<T>(path: string) {
       return response.data;
     }
   };
+}
+
+export function makeHttpRepository<T>(path: string) {
+  const HttpRepository = buildHttpRepository<T>(path);
+  return new HttpRepository();
 }
