@@ -1,12 +1,12 @@
 export interface IWrite<T> {
   create(item: T): Promise<boolean>;
-  update(id: string, item: T): Promise<boolean>;
-  delete(id: string): Promise<boolean>;
+  update(id: number, item: T): Promise<boolean>;
+  delete(id: number): Promise<boolean>;
 }
 
 export interface IRead<T> {
-  find(item: T): Promise<T[]>;
-  findOne(id: string): Promise<T>;
+  find(item: Partial<T>): Promise<T[]>;
+  findOne(id: number): Promise<T | null>;
 }
 
 export interface Paginated<T> {

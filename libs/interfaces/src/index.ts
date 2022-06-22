@@ -1,5 +1,7 @@
 export type Nullable<T> = T | null;
 
+export type WithoutId<T, Id extends string = "id"> = Omit<T, Id>;
+
 export interface Instituicao {
   id: number;
   nome?: Nullable<string>;
