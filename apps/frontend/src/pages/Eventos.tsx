@@ -2,7 +2,7 @@ import { Button, Grid } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Evento, Publicacao } from "@tcc/interfaces";
 import EventoRender from "../components/EventoRender";
-import { eventosRepository } from "../repositories/EventosRepository";
+import { eventosRepository } from "../repositories/eventosRepository";
 import { includePublicacao } from "../utils/includePublicacao";
 import {
   PublicacoesSelecionadasContext,
