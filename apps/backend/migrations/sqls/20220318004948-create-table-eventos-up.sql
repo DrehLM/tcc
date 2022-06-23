@@ -12,8 +12,12 @@ CREATE TABLE edicoes_new (
   fim TEXT,
   instituicao_id INTEGER,
   evento_id INTEGER,
-  FOREIGN KEY(instituicao_id) REFERENCES instituicoes(id),
-  FOREIGN KEY(evento_id) REFERENCES eventos(id)
+  FOREIGN KEY(instituicao_id)
+    REFERENCES instituicoes(id)
+    ON DELETE SET NULL,
+  FOREIGN KEY(evento_id)
+    REFERENCES eventos(id)
+    ON DELETE SET NULL
 );
 
 INSERT INTO

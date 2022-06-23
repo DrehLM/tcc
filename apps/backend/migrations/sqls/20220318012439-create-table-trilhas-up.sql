@@ -2,5 +2,7 @@ CREATE TABLE trilhas (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nome TEXT,
   edicao_id INTEGER,
-  FOREIGN KEY(edicao_id) REFERENCES edicoes(id)
+  FOREIGN KEY(edicao_id)
+    REFERENCES edicoes(id)
+    ON DELETE SET NULL
 );

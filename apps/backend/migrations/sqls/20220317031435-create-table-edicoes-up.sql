@@ -5,5 +5,7 @@ CREATE TABLE edicoes (
   inicio TEXT,
   fim TEXT,
   instituicao_id INTEGER,
-  FOREIGN KEY(instituicao_id) REFERENCES instituicoes(id)
+  FOREIGN KEY(instituicao_id)
+    REFERENCES instituicoes(id)
+    ON DELETE SET NULL
 );

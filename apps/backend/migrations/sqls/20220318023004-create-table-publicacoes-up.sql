@@ -7,6 +7,10 @@ CREATE TABLE publicacoes (
   abstract TEXT,
   edicao_id INTEGER,
   trilha_id INTEGER,
-  FOREIGN KEY(edicao_id) REFERENCES edicoes(id),
-  FOREIGN KEY(trilha_id) REFERENCES trilhas(id)
+  FOREIGN KEY(edicao_id)
+    REFERENCES edicoes(id)
+    ON DELETE SET NULL,
+  FOREIGN KEY(trilha_id)
+    REFERENCES trilhas(id)
+    ON DELETE SET NULL
 );
