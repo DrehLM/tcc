@@ -1,16 +1,15 @@
-import { Box, Button, Grid, Paper } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import { Button, Grid } from "@mui/material";
 import { Evento, Publicacao } from "@tcc/interfaces";
+import React, { useContext, useEffect, useState } from "react";
+import AddButton from "../components/AddButton";
+import EventoFormDialog from "../components/EventoFormDialog";
 import EventoRender from "../components/EventoRender";
 import { eventosRepository } from "../repositories/eventosRepository";
 import { includePublicacao } from "../utils/includePublicacao";
-
 import {
   PublicacoesSelecionadasContext,
   TPublicacoesSeleciodadsContext,
 } from "./../components/PublicacoesSelecionadasContext";
-import AddButton from "../components/AddButton";
-import EventoFormDialog from "../components/EventoFormDialog";
 
 const Eventos = () => {
   const [eventos, setEventos] = useState<Evento[]>([]);
