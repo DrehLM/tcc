@@ -29,7 +29,16 @@
     "dev": "ts-node-dev --no-notify src/",
     "start": "yarn run build && node lib/",
     "mocha": "mocha --require ts-node/register --require source-map-support/register \"test/**/*.ts\" --recursive --exit",
-    "build": "shx rm -rf lib/ && tsc"
+    "build": "shx rm -rf lib/ && tsc",
+    "seed:all": "sequelize-cli db:seed:all",
+    "seed:instituicao": "sequelize-cli db:seed --seed seeders/20220624000709-instituicao.js",
+    "seed:edicao": "sequelize-cli db:seed --seed seeders/20220624004956-edicao.js",
+    "seed:evento": "sequelize-cli db:seed --seed seeders/20220624010139-evento.js",
+    "seed:trilha": "sequelize-cli db:seed --seed seeders/20220624010808-trilha.js",
+    "seed:academico": "sequelize-cli db:seed --seed seeders/20220624011216-academico.js",
+    "seed:tag": "sequelize-cli db:seed --seed seeders/20220624012355-tag.js",
+    "seed:palavra-chave": "sequelize-cli db:seed --seed seeders/20220624012655-palavra-chave.js",
+    "seed:publicacao": "sequelize-cli db:seed --seed seeders/20220624020802-publicacao.js"
   },
   "standard": {
     "env": [
@@ -54,6 +63,7 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "@tcc/interfaces": "*",
     "@types/bluebird": "^3.5.36",
     "@types/compression": "^1.7.2",
@@ -70,6 +80,7 @@
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.5.0",
     "mocha": "^9.1.3",
+    "sequelize-cli": "^6.4.1",
     "shx": "^0.3.4",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.4"
