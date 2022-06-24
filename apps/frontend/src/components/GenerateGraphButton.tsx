@@ -31,7 +31,6 @@ const GenerateGraphButton = () => {
             position: "fixed",
             top: "50%",
             right: "3.5%",
-            transform: "translate(-50%, -50%)",
           }}
         >
           <EqualizerIcon />

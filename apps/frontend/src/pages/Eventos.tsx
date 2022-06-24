@@ -1,20 +1,24 @@
-import { Button, Grid } from "@mui/material";
+import { Box, Button, Grid, Paper } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Evento, Publicacao } from "@tcc/interfaces";
 import EventoRender from "../components/EventoRender";
 import { eventosRepository } from "../repositories/eventosRepository";
 import { includePublicacao } from "../utils/includePublicacao";
+
 import {
   PublicacoesSelecionadasContext,
   TPublicacoesSeleciodadsContext,
 } from "./../components/PublicacoesSelecionadasContext";
+import AddButton from "../components/AddButton";
+import EventoFormDialog from "../components/EventoFormDialog";
 
-const Edicoes = () => {
+const Eventos = () => {
   const [eventos, setEventos] = useState<Evento[]>([]);
   const { publicacoes, addPublicacoes, removePublicacoes } = useContext(
     PublicacoesSelecionadasContext
   ) as TPublicacoesSeleciodadsContext;
 
+  const [open, setOpen] = useState(false);
   const [buttonText, setButtonText] = useState("");
 
   useEffect(() => {
@@ -72,8 +76,14 @@ const Edicoes = () => {
           </Grid>
         ))}
       </Grid>
+      <AddButton
+        title="Adicionar novo evento"
+        open={open}
+        setOpen={setOpen}
+        DialogComponent={EventoFormDialog}
+      />
     </>
   );
 };
 
-export default Edicoes;
+export default Eventos;

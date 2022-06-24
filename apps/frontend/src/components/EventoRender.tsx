@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Checkbox, Paper, Typography } from "@mui/material";
+import { Box, Checkbox, Paper, Typography, IconButton } from "@mui/material";
 import { Evento, Publicacao } from "@tcc/interfaces";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   PublicacoesSelecionadasContext,
   TPublicacoesSeleciodadsContext,
@@ -74,6 +75,10 @@ const EventoRender = ({ evento }: EventoRendererProps) => {
     });
   };
 
+  const handleEdit = (event: React.SyntheticEvent) => {
+    event.stopPropagation();
+  };
+
   return (
     <Paper
       elevation={2}
@@ -95,7 +100,12 @@ const EventoRender = ({ evento }: EventoRendererProps) => {
           }}
         >
           <Typography variant="h5">{title}</Typography>
-          <Checkbox checked={checked} onClick={handleCheckboxClick} />
+          <Box>
+            <IconButton onClick={handleEdit}>
+              <EditIcon />
+            </IconButton>
+            <Checkbox checked={checked} onClick={handleCheckboxClick} />
+          </Box>
         </Box>
         <Typography variant="body1">
           {`${evento?.edicoes?.length} edições`}
