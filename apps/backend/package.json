@@ -27,6 +27,7 @@
     "test": "yarn run lint && yarn run build && yarn run mocha",
     "lint": "eslint src/. test/. --config .eslintrc.json --ext .ts --fix",
     "dev": "ts-node-dev --no-notify src/",
+    "debug": "yarn dev --inspect --respawn --transpile-only",
     "start": "yarn run build && node lib/",
     "mocha": "mocha --require ts-node/register --require source-map-support/register \"test/**/*.ts\" --recursive --exit",
     "build": "shx rm -rf lib/ && tsc",

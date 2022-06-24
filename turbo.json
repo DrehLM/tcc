@@ -16,6 +16,9 @@
     "dev": {
       "cache": false
     },
+    "debug": {
+      "cache": false
+    },
     "@tcc/frontend#start": {
       "cache": false
     }
