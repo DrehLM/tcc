@@ -16,6 +16,7 @@
   "scripts": {
     "test": "yarn turbo run test",
     "dev": "yarn turbo run dev",
+    "debug": "yarn turbo run debug",
     "build": "yarn turbo run build"
   }
 }
