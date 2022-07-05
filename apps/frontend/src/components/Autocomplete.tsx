@@ -11,8 +11,13 @@ import {
   UseControllerProps,
 } from "react-hook-form";
 
+interface Option<T> {
+  value: T;
+  label: string;
+}
+
 interface AutocompleteProps<
-  T,
+  T extends TFieldValues[TName] | Option<TFieldValues[TName]>,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined,
@@ -35,7 +40,7 @@ interface AutocompleteProps<
 }
 
 export default function Autocomplete<
-  T,
+  T extends TFieldValues[TName] | Option<TFieldValues[TName]>,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined,
